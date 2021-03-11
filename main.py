@@ -27,6 +27,15 @@ def fib3(n):
     if n%2 == 0:return mul(fff,fff) 
     else: return mul(mul(fff,fff),[[1,1],[1,0]])
 
+
+def fib(n):
+    if n < 2: return 1
+    else: return fib(n-1)+fib(n-2)
+def gib(n, mem):
+    if len(mem) > n: return mem[n]
+    else: 
+        mem.append(gib(n-1, mem)+gib(n-2, mem))
+        return mem[-1]
 aa = []
 dd ='aa'
 aa+=list(dd)
