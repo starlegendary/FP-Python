@@ -15,7 +15,7 @@ print(sth(10)(10))
 def gib3(n):
     base =  [[1,1,1],[1,0,0],[0,1,0]]
     if(n == 0 or n == 1): return base
-    
+
     fff = gib3(n//2)
     
     def mul(A,B):
@@ -31,6 +31,13 @@ def gib3(n):
     fff = mul(fff,fff) 
     if n%2 == 0:return fff 
     else: return mul(fff,base)
+
+def rev(ls): #reverse a list recursion
+      if len(ls) <= 1: return ls
+      print(ls[1:-1])
+      rest = rev(ls[1:-1])
+      print(rest)
+      return [ls[-1]]+rest+[ls[0]]
 
 
 def fib(n):
