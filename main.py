@@ -45,7 +45,28 @@ def ps(n): #print triangle dots
     rest = ps(n-1)
     print(rest)
     return rest + "*"
+def seq(n,i ):
+    if i == 0: return ['0'*(2*n)]
+    result = seq(n,i-1)
+    rest = []
+    part = list(map("".join,set(perm( '1'*i + '0'*(n-i) ,n))))
+    for x in part:
+        rest += list(map(lambda y: x+y, part))
 
+    return result + rest
+
+def seq3(n):
+    from itertools import permutations as perm
+    def inner(s):
+        if '1' not in s: return [s]
+        result = inner('0'+s[:-1])
+        rest = []
+        part = list(map("".join,set(perm(s,len(s)))))
+        for x in part:
+            rest += list(map(lambda y: x+y, part))
+
+        return result + rest
+    return inner('1'*n)
 def fib(n):
     if n < 2: return 1
     else: return fib(n-1)+fib(n-2)
