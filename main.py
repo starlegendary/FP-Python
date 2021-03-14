@@ -39,6 +39,12 @@ def rev(ls): #reverse a list recursion
       print(rest)
       return [ls[-1]]+rest+[ls[0]]
 
+def ps(n): #print triangle dots
+    if(n == 0): return "*" 
+    print('*'*n)
+    rest = ps(n-1)
+    print(rest)
+    return rest + "*"
 
 def fib(n):
     if n < 2: return 1
