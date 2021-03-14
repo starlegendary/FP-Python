@@ -12,20 +12,25 @@ def sth(a):
         return a==b
     return inner
 print(sth(10)(10))
-def fib3(n):
-  
-    if(n == 0 or n == 1): return [[1,1],[1,0]]
-    fff = fib3(n//2)
+def gib3(n):
+    base =  [[1,1,1],[1,0,0],[0,1,0]]
+    if(n == 0 or n == 1): return base
+    
+    fff = gib3(n//2)
+    
     def mul(A,B):
-        BT = [[B[j][i] for j in range(len(B))] for i in range(len(B[0]))]
         return list(map(lambda a: 
                     list(
                       map(lambda b:
-                      sum(map(lambda x,y: x*y,a,b)),BT)
+                      sum(map(lambda x,y: x*y,a,b)),
+                      [[B[j][i] for j in range(len(B))] 
+                      for i in range(len(B[0]))])
                     )
                     ,A))
-    if n%2 == 0:return mul(fff,fff) 
-    else: return mul(mul(fff,fff),[[1,1],[1,0]])
+                    
+    fff = mul(fff,fff) 
+    if n%2 == 0:return fff 
+    else: return mul(fff,base)
 
 
 def fib(n):
@@ -36,7 +41,5 @@ def gib(n, mem):
     else: 
         mem.append(gib(n-1, mem)+gib(n-2, mem))
         return mem[-1]
-aa = []
-dd ='aa'
-aa+=list(dd)
-print(aa)
+for i in range(10):
+    print(gib3(i)[0][0])
